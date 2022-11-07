@@ -8,7 +8,7 @@ G<-length(unique(i) ) # Number of clusters/groups.
 delta<-CENSORING  
 time<-as.matrix(Time) # This is individual time to follow up
 X<- as.matrix(cbind(covariates) ) # Covariate matrix
-
+ m<-as.numeric(ncol(X))
 #########################################################
 # Marginal Likelihood estimation of parameters assuming #
 # gamma frailty and splines for baseline hazard         #
@@ -22,7 +22,7 @@ Theta_Weib<-vector( "numeric" , length(1:r))
 Beta_Weib<-vector( "numeric" , length(1:r))
 #============================
 #df = knots(K)+degree(D)+1 
-alpha<-matrix(c(rep(0,n*df)),ncol=df) #B Spline coefficients
+alpha<-vector( "numeric" , df) #B Spline coefficients
 #Let m be the number of covariates in dataset.
 # p[1:m]<-beta ; p[m+1]<-theta ; p[m+2:m+df+1] <- B-spline coefficients
 #Example, suppose we have 4 covariates, 7 knots for a cubic spline
